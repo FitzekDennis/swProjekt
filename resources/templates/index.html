@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Dream Schufa - Enter the dream</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md sticky-top navbar-dark bg-secondary">
+    <a class="navbar-brand" href="#">
+        <img th:src="@{image/logo.png}" width="30px" height="30px">
+        DreamSchufa
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto" >
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">HowTo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+        </ul>
+    </div>
+    <div sec:authorize="!isAuthenticated()">
+        <form class="form-inline my-2 my-lg-0" method="get" action="/login">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+        </form>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <form class="form-inline my-2 my-lg-0" method="get" action="/logout">
+            <button class="btn btn-outline my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+
+<div style="width: 50%; margin: auto; padding-top: 20px">
+    <img th:src="@{image/LogoFull.png}" width="150px" height="100px" style="margin-left: auto; margin-right: auto; display: block">
+    <h1>Willkommen bei DreamSchufa</h1>
+    <div class="text"> <h2>Chancen nutzen und Risiken minimieren: Das muss kein Traum bleiben. Enter the Dream - mit DreamSchufa</h2><p>Mit unseren vielfältigen Leistungen aus den Bereichen Bonität, Adresse, FraudPrevention &amp; Compliance und Softwarelösungen unterstützen wir Unternehmen, die Chancen und Risiken bei ihren Geschäften mit privaten oder gewerblichen Kunden besser einschätzen zu können. </p><ul> <li><b>Höhere Zahlungssicherheit</b> <br>Ob bei Geschäften mit privaten Personen oder mit Unternehmen: Wir bieten Ihnen wichtige Informationen zur Bonität Ihrer Kunden, damit Sie eine sichere Entscheidungsgrundlage für Vertragsabschlüsse haben.<br> </li><li><b>Wissen, mit wem Sie Geschäfte machen</b><br>Scherzbestellungen im Internet, Käufe unter falschem Namen oder unwahre Angaben zum Alter bei jungendschutzrelevanten Angeboten – unsere Identitätsprodukte bieten Ihnen mehr Sicherheit im Onlinehandel.<br> </li><li><b>Unbekannt verzogene Kunden wieder finden</b><br>Ihr Kunde ist „unbekannt verzogen“ und Sie haben noch offene Forderungen? Oder ein unbekannt verzogener Kunde hält noch Sparbücher, Depots oder andere Anlageprodukte bei Ihrer Bank? Wir helfen Ihnen dabei, die aktuelle Adresse zu ermitteln.<br> </li><li><b>Wirkungsvolle Betrugsprävention</b><br>Der SCHUFA-FraudPool ermöglicht Kreditinstituten den Austausch von Informationen zu konkreten Betrugsverdachtsfällen auf Basis des Gegenseitigkeitsprinzips. Damit unterstützen wir bei der Abwehr von Betrugsversuchen und helfen, Schaden von Kreditinstituten, Verbrauchern und der Volkswirtschaft als Ganzes abzuwenden.</li> </ul> </div>
+
+    <div class="card" style="width: 60%;margin: auto; margin-bottom: 20px ">
+        <div class="card-header">Registrieren Sie sich jetzt und profitieren Sie von der Dream Schufa Auskunft</div>
+        <div class="card-body">
+            <form method="post" action="/restapi/customer/new">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">Ihr Firmenname</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Passwort</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                    <small id="pwHelp" class="form-text text-muted">Passwort</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">IBAN</label>
+                    <input type="text" class="form-control" id="exampleIban1" name="iban">
+                    <small id="ibanHelp" class="form-text text-muted">Die IBAN ihres M26-Bank Accounts</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">SendeKey</label>
+                    <input type="text" class="form-control" id="examplesSenderKey1" name="senderKey">
+                    <small id="keyHelp" class="form-text text-muted">Der SendeKey, der Sie für Ihren M26-Bank Account authentifiziert</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Registrieren</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>How To</title>
+</head>
+<body>
+<nav class="navbar sticky-top navbar-dark bg-secondary" style="padding-left: 50px;">
+    <a class="navbar-brand" href="#">
+        <img th:src="@{image/logo.png}" width="30px" height="30px">
+        DreamSchufa
+    </a>
+    <div class="collapse navbar-collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarNav">
+        <ul class="navbar-nav" >
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">HowTo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+        </ul>
+    </div>
+    <form class="form-inline my-2 my-lg-0" method="get" action="/login">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+    </form>
+    <div sec:authorize="isAuthenticated()">
+        <form class="form-inline my-2 my-lg-0" method="get" action="/logout">
+            <button
+                    class="btn btn-outline my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+
+    <a>Hallo Test. Hier soll die API erklärt werden</a>
+</body>
+</html>

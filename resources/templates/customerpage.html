@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title>Dream Schufa - Enter the dream</title>
+    <base href="http://localhost:8823/">
+</head>
+<body>
+<nav class="navbar sticky-top navbar-dark bg-secondary">
+    <a class="navbar-brand" href="#">
+        <img th:src="@{image/logo.png}" width="30px" height="30px">
+        DreamSchufa
+    </a>
+    <div class="collapse navbar-collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarNav">
+        <ul class="navbar-nav" >
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">HowTo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+        </ul>
+    </div>
+    <div sec:authorize="!isAuthenticated()">
+        <form class="form-inline my-2 my-lg-0" method="get" action="/login">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+        </form>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <form class="form-inline my-2 my-lg-0" method="get" action="/logout">
+            <button class="btn btn-outline my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+
+<div style="width: 50%; margin: auto; padding-top: 20px">
+    <a>Die Anmeldung war erfolgreich. Bitte notieren sie sich ihren persönlich erstellten ApyKey. </a> <br>
+    <div class="card" style="width: 60%;margin: auto; margin: 20px ">
+        <div class="card-header">Ihr ApiKey</div>
+        <div class="card-body">
+            <a>ApiKey: </a><span th:text="${apiKey}"/>
+        </div>
+    </div>
+    <a>Für weitere Information über die Verwendung der API bitte auf Folgenden Link gehen.</a> <br>
+    <a href="../howto.html">How to use</a>
+
+    <div sec:authorize="isAuthenticated()">gerendert, falls Principal authentifiziert</div>
+
+</div>
+</div>
+</body>
+</html>
